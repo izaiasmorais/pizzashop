@@ -1,16 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import colors from "tailwindcss/colors";
-
-import {
-  ResponsiveContainer,
-  Line,
-  Tooltip,
-  LineChart,
-  Pie,
-  PieChart,
-  Cell,
-} from "recharts";
+import { ResponsiveContainer, Pie, PieChart, Cell } from "recharts";
 import { BarChart } from "lucide-react";
+import colors from "tailwindcss/colors";
 
 const data = [
   { product: "Pepperoni", amount: 40 },
@@ -51,8 +42,8 @@ export function PopularProductsChart() {
               cy="50%"
               outerRadius={86}
               innerRadius={64}
-							strokeWidth={8}
-							labelLine={false}
+              strokeWidth={8}
+              labelLine={false}
               label={({
                 cx,
                 cy,
