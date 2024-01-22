@@ -48,7 +48,7 @@ export function RevenueChart() {
               type="linear"
               strokeWidth={2}
               dataKey="revenue"
-              stroke={colors.rose["500"]}
+              stroke={colors.violet["500"]}
             />
 
             <YAxis
@@ -66,13 +66,6 @@ export function RevenueChart() {
 
             <XAxis dataKey="date" tickLine={false} axisLine={false} dy={16} />
 
-            <Tooltip
-              contentStyle={{
-                background: "#000",
-                border: "none",
-                borderRadius: "1px",
-              }}
-            />
           </LineChart>
         </ResponsiveContainer>
       </CardContent>
