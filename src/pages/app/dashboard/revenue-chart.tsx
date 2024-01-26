@@ -25,6 +25,9 @@ const data = [
   { date: "01/05", revenue: 1340 },
   { date: "01/06", revenue: 1500 },
   { date: "01/07", revenue: 1100 },
+  { date: "01/08", revenue: 987 },
+  { date: "01/09", revenue: 1400 },
+  { date: "01/10", revenue: 600 },
 ];
 
 export function RevenueChart() {
