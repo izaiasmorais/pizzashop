@@ -8,6 +8,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
+import { Link } from "react-router-dom";
 
 export function AccountMenu() {
   return (
@@ -34,9 +35,11 @@ export function AccountMenu() {
           <Building className="mr-2 h-4 w-4" />
           Perfil da loja
         </DropdownMenuItem>
-        <DropdownMenuItem className="text-rose-500 dark:text-rose-400">
-          <LogOut className="mr-2 h-4 w-4" />
-          Sair
+        <DropdownMenuItem className="text-rose-500 dark:text-rose-400" asChild>
+          <Link to="/sign-in">
+            <LogOut className="mr-2 h-4 w-4" />
+            Sair
+          </Link>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
