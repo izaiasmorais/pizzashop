@@ -12,18 +12,18 @@ import {
 } from "@/api/get-managed-restaurant";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { Label } from "@radix-ui/react-label";
-import { useForm } from "react-hook-form";
-import { Textarea } from "./ui/textarea";
-import { Button } from "./ui/button";
-import { Input } from "./ui/input";
-import { z } from "zod";
 import { updateProfile } from "@/api/update-profile";
+import { Textarea } from "./ui/textarea";
+import { useForm } from "react-hook-form";
+import { Button } from "./ui/button";
+import { Label } from "@radix-ui/react-label";
+import { Input } from "./ui/input";
 import { toast } from "sonner";
+import { z } from "zod";
 
 const storeProfileSchema = z.object({
   name: z.string().min(1),
-  description: z.string(),
+  description: z.string().nullable(),
 });
 
 type StoreProfileSchema = z.infer<typeof storeProfileSchema>;
@@ -49,22 +49,38 @@ export function StoreProfileDialog() {
     },
   });
 
+  function updateManagedRestaurantCache({
+    description,
+    name,
+  }: StoreProfileSchema) {
+    const cashed = queryClient.getQueryData<GetManagedRestaurantResponse>([
+      "managed-restaurant",
+    ]);
+
+    if (cashed) {
+      queryClient.setQueryData<GetManagedRestaurantResponse>(
+        ["managed-restaurant"],
+        {
+          ...cashed,
+          name,
+          description,
+        },
+      );
+    }
+
+    return { cashed };
+  }
+
   const { mutateAsync: updateProfileFn } = useMutation({
     mutationFn: updateProfile,
-    onSuccess(_, { name, description }) {
-      const cashed = queryClient.getQueryData<GetManagedRestaurantResponse>([
-        "managed-restaurant",
-      ]);
+    onMutate({ name, description }) {
+      const { cashed } = updateManagedRestaurantCache({ name, description });
 
-      if (cashed) {
-        queryClient.setQueryData<GetManagedRestaurantResponse>(
-          ["managed-restaurant"],
-          {
-            ...cashed,
-            name,
-            description,
-          },
-        );
+      return { previusProfile: cashed };
+    },
+    onError(_, __, context) {
+      if (context?.previusProfile) {
+        updateManagedRestaurantCache(context.previusProfile);
       }
     },
   });
