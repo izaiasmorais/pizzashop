@@ -5,14 +5,6 @@ import colors from "tailwindcss/colors";
 import { useQuery } from "@tanstack/react-query";
 import { getPopularProducts } from "@/api/get-popular.products";
 
-const data = [
-  { product: "Pepperoni", amount: 40 },
-  { product: "Calabresa", amount: 30 },
-  { product: "3 Queijos", amount: 35 },
-  { product: "Muzzarela", amount: 51 },
-  { product: "Carne", amount: 26 },
-];
-
 const COLORS = [
   colors.sky[500],
   colors.amber[500],

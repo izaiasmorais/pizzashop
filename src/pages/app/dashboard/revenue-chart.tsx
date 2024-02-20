@@ -11,7 +11,6 @@ import {
   ResponsiveContainer,
   YAxis,
   Line,
-  Tooltip,
   CartesianGrid,
   XAxis,
   LineChart,
@@ -68,7 +67,6 @@ export function RevenueChart() {
             />
 
             <XAxis dataKey="date" tickLine={false} axisLine={false} dy={16} />
-
           </LineChart>
         </ResponsiveContainer>
       </CardContent>
