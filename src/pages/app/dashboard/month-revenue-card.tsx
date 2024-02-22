@@ -2,6 +2,7 @@ import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { DollarSign } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import { getMonthRevenue } from "@/api/get-month-revenue";
+import { MetricCardSkeleton } from "./metric-card-skeleton";
 
 export function MonthRevenueCard() {
   const { data: monthRevenue } = useQuery({
@@ -45,6 +46,8 @@ export function MonthRevenueCard() {
             )}
           </>
         )}
+
+        {!monthRevenue && <MetricCardSkeleton />}
       </CardContent>
     </Card>
   );
