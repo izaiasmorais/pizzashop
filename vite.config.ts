@@ -11,9 +11,11 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
-	test: {
-		globals: true
-	},
+  test: {
+    globals: true,
+		setupFiles: ["./src/test/setup.ts"],
+		environment: ['happy-dom']
+  },
 }) as UserConfig & {
-	test: InlineConfig;
+  test: InlineConfig;
 };

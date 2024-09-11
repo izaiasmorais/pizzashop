@@ -7,7 +7,7 @@ export interface OrderDetailsParams {
 export interface getOrderDetailsResponse {
   id: string;
   createdAt: string;
-  status: "pending" | "processing" | "delivering" | "canceled" | "delivered";
+  status: "pending" | "processing" | "delivering" | "cancelled" | "delivered";
   totalInCents: number;
   customer: {
     name: string;
@@ -17,11 +17,11 @@ export interface getOrderDetailsResponse {
   orderItems: {
     id: string;
     priceInCents: number;
-		quantity: number;
-		product: {
-			name: string;
-		}
-	}[];
+    quantity: number;
+    product: {
+      name: string;
+    };
+  }[];
 }
 
 export async function getOrderDetails({ orderId }: OrderDetailsParams) {

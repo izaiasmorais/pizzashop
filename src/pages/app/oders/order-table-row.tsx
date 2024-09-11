@@ -19,7 +19,7 @@ export interface OrderTableRowProps {
   order: {
     orderId: string;
     createdAt: string;
-    status: "pending" | "canceled" | "processing" | "delivering" | "delivered";
+    status: "pending" | "cancelled" | "processing" | "delivering" | "delivered";
     customerName: string;
     total: number;
   };
@@ -66,7 +66,7 @@ export function OrderTableRow({ order }: OrderTableRowProps) {
     useMutation({
       mutationFn: cancelOrder,
       async onSuccess(_, { orderId }) {
-        updateOrdersStatusOnCache(orderId, "canceled");
+        updateOrdersStatusOnCache(orderId, "cancelled");
       },
     });
 

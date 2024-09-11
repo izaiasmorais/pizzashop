@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { getMonthCancelledOrdersAmount } from "@/api/get-month-cancelled-orders-amount";
 import { MetricCardSkeleton } from "./metric-card-skeleton";
 
-export function MonthCanceledOrdersAmountCard() {
+export function MonthcancelledOrdersAmountCard() {
   const { data: monthCancelledOrdersAmount } = useQuery({
     queryFn: getMonthCancelledOrdersAmount,
     queryKey: ["metrics", "month-cancelled-orders-amount"],
