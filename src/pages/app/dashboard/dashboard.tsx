@@ -2,7 +2,7 @@ import { Helmet } from "react-helmet-async";
 import { MonthRevenueCard } from "./month-revenue-card";
 import { MonthOrdersAmountCard } from "./month-orders-amount-card";
 import { DayOrdersAmountCard } from "./day-orders-amount-card";
-import { MonthcancelledOrdersAmountCard } from "./month-cancelled-orders-amount-card";
+import { MonthcancelledOrdersAmountCard } from "./month-canceled-orders-amount-card";
 import { RevenueChart } from "./revenue-chart";
 import { PopularProductsChart } from "./popular-products-chart";
 

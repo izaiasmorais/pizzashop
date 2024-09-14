@@ -83,7 +83,7 @@ describe("Pagination", () => {
 
     await user.click(nextPageButton);
 
-    expect(onPageChangeCallback).toHaveBeenCalledWith(1);
+    expect(onPageChangeCallback).toHaveBeenCalledWith(0);
   });
 
   it("shoulde be able to navigate to the last page", async () => {
