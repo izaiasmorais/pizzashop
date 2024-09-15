@@ -7,7 +7,7 @@ export interface GetMonthCancelledOrdersAmountResponse {
 
 export async function getMonthCancelledOrdersAmount() {
   const response = await api.get<GetMonthCancelledOrdersAmountResponse>(
-    "/metrics/month-cancelled-orders-amount",
+    "/metrics/month-canceled-orders-amount",
   );
 
   return response.data;
