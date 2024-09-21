@@ -3,10 +3,10 @@ import { expect, test } from "@playwright/test";
 test("list orders", async ({ page }) => {
   await page.goto("/orders", { waitUntil: "networkidle" });
 
-  expect(
+  await expect(
     page.getByRole("cell", { name: "Costumer 1", exact: true }),
   ).toBeVisible();
-  expect(page.getByRole("cell", { name: "Costumer 10" })).toBeVisible();
+  await expect(page.getByRole("cell", { name: "Costumer 10" })).toBeVisible();
 });
 
 test("paginate orders", async ({ page }) => {
@@ -14,24 +14,24 @@ test("paginate orders", async ({ page }) => {
 
   await page.getByRole("button", { name: "Próxima página" }).click();
 
-  expect(
+  await expect(
     page.getByRole("cell", { name: "Costumer 11", exact: true }),
   ).toBeVisible();
-  expect(page.getByRole("cell", { name: "Costumer 20" })).toBeVisible();
+  await expect(page.getByRole("cell", { name: "Costumer 20" })).toBeVisible();
 
   await page.getByRole("button", { name: "Última página" }).click();
 
-  expect(
+  await expect(
     page.getByRole("cell", { name: "Costumer 51", exact: true }),
   ).toBeVisible();
-  expect(page.getByRole("cell", { name: "Costumer 60" })).toBeVisible();
+  await expect(page.getByRole("cell", { name: "Costumer 60" })).toBeVisible();
 
   await page.getByRole("button", { name: "Primeira página" }).click();
 
-  expect(
+  await expect(
     page.getByRole("cell", { name: "Costumer 1", exact: true }),
   ).toBeVisible();
-  expect(page.getByRole("cell", { name: "Costumer 10" })).toBeVisible();
+  await expect(page.getByRole("cell", { name: "Costumer 10" })).toBeVisible();
 });
 
 test("filter by order id", async ({ page }) => {
@@ -41,9 +41,9 @@ test("filter by order id", async ({ page }) => {
 
   await page.getByRole("button", { name: "Filtrar resultados" }).click();
 
-  expect(page.getByRole("cell", { name: "Costumer 10" })).toBeVisible();
+  await expect(page.getByRole("cell", { name: "Costumer 10" })).toBeVisible();
 
-  expect(page.getByText("Total de 1 item(s)")).toBeVisible();
+  await expect(page.getByText("Total de 1 item(s)")).toBeVisible();
 });
 
 test("filter by costumer name", async ({ page }) => {
@@ -53,9 +53,9 @@ test("filter by costumer name", async ({ page }) => {
 
   await page.getByRole("button", { name: "Filtrar resultados" }).click();
 
-  expect(page.getByRole("cell", { name: "Costumer 11" })).toBeVisible();
+  await expect(page.getByRole("cell", { name: "Costumer 11" })).toBeVisible();
 
-  expect(page.getByText("Total de 1 item(s)")).toBeVisible();
+  await expect(page.getByText("Total de 1 item(s)")).toBeVisible();
 });
 
 test("filter by status", async ({ page }) => {
@@ -67,7 +67,5 @@ test("filter by status", async ({ page }) => {
 
   await page.getByRole("button", { name: "Filtrar resultados" }).click();
 
-  const tableRows = await page.getByRole("cell", { name: "Pendente" }).all();
-
-  expect(tableRows).toHaveLength(10);
+  await expect(page.getByRole("cell", { name: "Pendente" })).toHaveCount(10);
 });
