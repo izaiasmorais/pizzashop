@@ -5,7 +5,7 @@ export const getManagedRestaurantMock = http.get<
   never,
   never,
   GetManagedRestaurantResponse
->("/me", () => {
+>("/managed-restaurant", () => {
   return HttpResponse.json({
     id: "customer-restaurant-id",
     name: "Pizza Shop",
